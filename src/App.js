@@ -1,7 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, Fragment} from 'react'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import './App.css';
 import Gallery from './Gallery';
 import SearchBar from './SearchBar';
+import AlbumView from './AlbumView';
+import ArtistView from './ArtistView';
 
 function App() {
   let [search, setSearch] = useState('')
@@ -33,9 +36,19 @@ function App() {
 
   return (
     <div className="App">
-      <SearchBar handleSearch = {handleSearch}/>
       {message}
-      <Gallery data = {data}/>
+      <Router>
+        <Routes>
+          <Route path='/' element = {
+            <Fragment>
+              <SearchBar handleSearch = {handleSearch}/>
+              <Gallery data = {data}/>
+            </Fragment>
+          } />
+          <Route path = '/album/:id' element = {<AlbumView />} />
+          <Route path = '/artist/:id' element = {<ArtistView />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
