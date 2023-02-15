@@ -12,7 +12,7 @@ export default function Gallery(){
     })
 
     return (
-        <div>
+        <div className='music-container'>
             {display}
         </div>
     )

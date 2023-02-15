@@ -8,6 +8,7 @@ import Gallery from './Gallery';
 import SearchBar from './SearchBar';
 import AlbumView from './AlbumView';
 import ArtistView from './ArtistView';
+import EmptyView from './EmptyView';
 
 //CONTEXT
 import { DataContext } from './context/DataContext';
@@ -38,7 +39,7 @@ function App() {
 
   return (
     <div className="App">
-      {message}
+      <h1 style={{color:'rgb(160, 237, 46)'}}>{message}</h1>
 
       <Router>
         <Routes>
@@ -54,7 +55,7 @@ function App() {
               </DataContext.Provider>
             </Fragment>
           } />
-          
+
           <Route path = '/album/:id' element = {<AlbumView />} />
           <Route path = '/artist/:id' element = {<ArtistView />} />
         </Routes>

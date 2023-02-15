@@ -30,18 +30,20 @@ export default function ArtistView() {
     const renderAlbums = justAlbums.map((album, i) => {
         return (
             <div key={i}>
+                <img style={{'width':'150px', 'height': 'auto'}} src={album.artworkUrl100} alt={album.collectionName}></img>
+                
                 <Link to = {`/album/${album.collectionId}`}>
                     <p>{album.collectionName}</p>
                 </Link>
+                <hr></hr>
             </div>
         )
     })
 
     return (
         <div>
-            {artistData.length>0 ? <h2>{artistData[0].artistName}</h2> : <h2>Loading</h2>}
-            {navButtons()}
-            <h2>Albums</h2>
+            {artistData.length>0 ? <h2>{`Albums by ${artistData[0].artistName}`}</h2> : <h2>Loading album names...</h2>}
+            {navButtons()} <br></br>
             {renderAlbums}
         </div>
     )

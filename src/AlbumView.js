@@ -30,14 +30,15 @@ export default function AlbumView(){
     const renderSongs = justSongs.map((song, i) => {
         return (
             <div key = {i}>
-                <p>{song.trackName}</p>
+                <p style={{'color': 'rgb(160, 237, 46)'}}>{song.trackName}</p>
             </div>
         )
     })
 
     return (
         <div>
-            {albumData.length > 0 ? <h2>{albumData[0].collectionName}</h2> : <h2>Loading</h2>}
+            {albumData.length > 0 ? <h2>{`Songs from album ${albumData[0].collectionName}`}</h2> : <h2>Loading</h2>}
+            <img src={albumData[0].artworkUrl30} alt={albumData[0].collectionName}></img>
             {navButtons()}
            {renderSongs}
         </div>
